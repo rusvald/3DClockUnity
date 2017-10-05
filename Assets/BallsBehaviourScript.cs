@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BallsBehaviourScript : MonoBehaviour {
+    bool enable_anim = false;
     float ypos = 0;
     bool createNew = true;
 	// Use this for initialization
@@ -18,6 +19,7 @@ public class BallsBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         this.transform.RotateAround(new Vector3(0,0,0), new Vector3(0,1,0), 1.0f);
         this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 12.0f / 360.0f, this.transform.position.z);
 
@@ -31,6 +33,7 @@ public class BallsBehaviourScript : MonoBehaviour {
             GameObject.Destroy(this.gameObject);
             return;
         }
+        if (!enable_anim) return;
 
         MeshRenderer meshR =  this.gameObject.GetComponent<MeshRenderer>();
         Material mat = meshR.materials[0];

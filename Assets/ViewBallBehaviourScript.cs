@@ -16,6 +16,7 @@ public class ViewBallBehaviourScript : MonoBehaviour {
 
     private void OnMouseUp()
     {
+        System.GC.Collect();
         UnityEngine.GameObject.Find("Main Camera").SendMessage("ChangeView");
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HourDigitBehaviourScript : MonoBehaviour {
+    bool enable_anim = true;
     int hourDig = 0, secOld = -1, sec10Old = -1, minOld = -1, min10Old = -1, hrOld = -1, hr10Old = -1;
     float pos = 0, digSpd = 0.4f;
     bool isInstance = false;
@@ -30,6 +31,8 @@ public class HourDigitBehaviourScript : MonoBehaviour {
         int min = System.DateTime.Now.TimeOfDay.Minutes - min10 * 10;
         int hr10 = System.DateTime.Now.TimeOfDay.Hours / 10;
         int hr = System.DateTime.Now.TimeOfDay.Hours - hr10 * 10;
+
+        if (!enable_anim) return;
 
         if (!isInstance)
         {
@@ -154,6 +157,7 @@ public class HourDigitBehaviourScript : MonoBehaviour {
             this.gameObject.transform.Translate(new Vector3(0, pos, 0));
             this.gameObject.transform.Rotate(new Vector3(0, -1, 0), 90.0f);
             pos -= pos;
+            
             Destroy(this.gameObject);
         }
     }

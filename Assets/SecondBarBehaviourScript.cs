@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SecondBarBehaviourScript : MonoBehaviour {
     float ay = 0, az = 0;
+    bool enable_anim = true;
+
 	// Use this for initialization
 	void Start () {
         ay = this.transform.rotation.eulerAngles.y;
@@ -11,6 +13,7 @@ public class SecondBarBehaviourScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!enable_anim) return;
         this.transform.eulerAngles = new Vector3(0, ay, az);
         
         this.transform.position =new Vector3(this.transform.position.x, this.transform.position.y + 0.01f, this.transform.position.z);
